@@ -853,9 +853,14 @@ body {
   color: var(--line-strong);
   font-size: 1.4rem;
   cursor: pointer;
-  padding: 0.2rem;
+  padding: 0.35rem 0.5rem;
   transition: color 0.15s ease;
   font-family: inherit;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .fc-log-star:hover { color: #d4a47a; }
 .fc-log-star.is-filled { color: #d4a47a; }
@@ -1094,6 +1099,121 @@ body {
 }
 .sidebar.is-collapsed .sidebar-phone {
   display: none !important;
+}
+
+/* ─── Mobile drawer (sidebar as off-canvas drawer on phones) ─── */
+
+/* Hamburger button — fixed top-left, only visible on mobile */
+.mobile-hamburger {
+  display: none;
+  position: fixed;
+  top: 0.85rem;
+  left: 0.85rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--charcoal);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 90;
+  font-family: inherit;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.mobile-hamburger:hover {
+  background: #3a3530;
+}
+
+/* Mobile-only close button inside the drawer */
+.mobile-drawer-close {
+  display: none;
+  position: absolute;
+  top: 0.6rem;
+  right: 0.7rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  font-family: inherit;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  padding: 0;
+}
+.mobile-drawer-close:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Overlay behind the drawer */
+.mobile-drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 95;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.mobile-drawer-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Apply mobile drawer pattern below 900px */
+@media (max-width: 899px) {
+  .mobile-hamburger { display: flex; }
+  .mobile-drawer-overlay { display: block; }
+  .mobile-drawer-close { display: flex; }
+
+  /* Sidebar: hidden by default, slides in from left when open */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 85vw;
+    max-width: 320px;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 100;
+  }
+  .sidebar.is-mobile-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Collapsed-state visual is meaningless on mobile (drawer is either open or closed) */
+  .sidebar.is-collapsed {
+    width: 85vw;
+    max-width: 320px;
+  }
+  /* Hide the desktop-only collapse button */
+  .sidebar-collapse-btn { display: none !important; }
+  /* In drawer mode, always show full labels and brand text regardless of is-collapsed */
+  .sidebar.is-collapsed .sidebar-brand-text { display: flex !important; }
+  .sidebar.is-collapsed .sidebar-nav-emoji { display: none !important; }
+  .sidebar.is-collapsed .sidebar-nav-label { display: inline !important; }
+  .sidebar.is-collapsed .sidebar-loc { display: flex !important; }
+  .sidebar.is-collapsed .sidebar-phone { display: flex !important; }
+  .sidebar.is-collapsed .sidebar-nav-caret { display: flex !important; }
+  .sidebar.is-collapsed .sidebar-nav-children { display: flex !important; }
+
+  /* Adjust main column padding so hamburger doesn't sit on content */
+  .main-col { padding-top: 3rem; }
+
+  /* Push the screen-shell content down so the hamburger doesn't overlap */
+  .screen-shell { padding-top: 0.5rem; }
 }
 
 /* ─── Main column ─── */
@@ -10644,7 +10764,7 @@ body {
   backdrop-filter: blur(4px);
   display: grid;
   place-items: center;
-  z-index: 100;
+  z-index: 200;
   padding: 1.5rem;
 }
 .modal {
@@ -23524,9 +23644,20 @@ body {
     "daily-log": "📋",
   };
 
-  function Sidebar({ currentScreen, currentLoc, onNavigate, onSwitchLoc, isCollapsed, onToggleCollapsed, expandedParents, onToggleParent }) {
+  function Sidebar({ currentScreen, currentLoc, onNavigate, onSwitchLoc, isCollapsed, onToggleCollapsed, expandedParents, onToggleParent, mobileDrawerOpen, onCloseMobileDrawer }) {
     return html`
-      <aside className=${`sidebar ${isCollapsed ? "is-collapsed" : ""}`}>
+      <aside
+        id="main-sidebar"
+        className=${`sidebar ${isCollapsed ? "is-collapsed" : ""} ${mobileDrawerOpen ? "is-mobile-open" : ""}`}
+      >
+        <button
+          type="button"
+          className="mobile-drawer-close"
+          onClick=${onCloseMobileDrawer}
+          aria-label="Close navigation menu"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
         <div className="sidebar-brand">
           <button
             className="sidebar-collapse-btn"
@@ -25662,6 +25793,8 @@ body {
     const [currentLocId, setCurrentLocId] = usePersistentState(`${STORAGE_PREFIX}-loc`, "rtc");
     const [currentScreen, setCurrentScreen] = usePersistentState(`${STORAGE_PREFIX}-screen`, "home");
     const [sidebarCollapsed, setSidebarCollapsed] = usePersistentState(`${STORAGE_PREFIX}-sidebar-collapsed`, false);
+    // Mobile drawer state — not persistent, always closed on fresh load
+    const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
     const [checklistState, setChecklistState] = usePersistentState(`${STORAGE_PREFIX}-checklist`, {});
     const [teamDirectory, setTeamDirectory] = usePersistentState(`${STORAGE_PREFIX}-team-directory`, {});
     const [safetyChecklist, setSafetyChecklist] = usePersistentState(`${STORAGE_PREFIX}-safety-checklist`, {});
@@ -25743,11 +25876,23 @@ body {
       });
     });
 
+    // Mobile drawer: when open, lock the body scroll so the page underneath
+    // doesn't scroll behind the drawer. Restored on close.
+    useEffect(() => {
+      if (mobileDrawerOpen) {
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => { document.body.style.overflow = prev; };
+      }
+    }, [mobileDrawerOpen]);
+
     function handleToggleParent(parentId) {
       setExpandedParents((prev) => ({ ...prev, [parentId]: !prev[parentId] }));
     }
 
     function handleNavigate(rawScreenId) {
+      // Always close the mobile drawer when navigating (no-op on desktop)
+      setMobileDrawerOpen(false);
       // Support compound IDs like "screen#anchor" — navigate to screen, then scroll to anchor.
       const hashIndex = rawScreenId.indexOf("#");
       const screenId = hashIndex >= 0 ? rawScreenId.slice(0, hashIndex) : rawScreenId;
@@ -26887,7 +27032,22 @@ body {
     }
 
     return html`
-      <div className=${`app-shell ${sidebarCollapsed ? "is-sidebar-collapsed" : ""}`}>
+      <div className=${`app-shell ${sidebarCollapsed ? "is-sidebar-collapsed" : ""} ${mobileDrawerOpen ? "is-mobile-drawer-open" : ""}`}>
+        <button
+          type="button"
+          className="mobile-hamburger"
+          onClick=${() => setMobileDrawerOpen(true)}
+          aria-label="Open navigation menu"
+          aria-expanded=${mobileDrawerOpen}
+          aria-controls="main-sidebar"
+        >
+          <span aria-hidden="true">☰</span>
+        </button>
+        <div
+          className=${`mobile-drawer-overlay ${mobileDrawerOpen ? "is-visible" : ""}`}
+          onClick=${() => setMobileDrawerOpen(false)}
+          aria-hidden="true"
+        ></div>
         <${Sidebar}
           currentScreen=${currentScreen}
           currentLoc=${currentLoc}
@@ -26897,6 +27057,8 @@ body {
           onToggleCollapsed=${() => setSidebarCollapsed((v) => !v)}
           expandedParents=${expandedParents}
           onToggleParent=${handleToggleParent}
+          mobileDrawerOpen=${mobileDrawerOpen}
+          onCloseMobileDrawer=${() => setMobileDrawerOpen(false)}
         />
         <div className="main-col">
           <main className="screen-shell">
