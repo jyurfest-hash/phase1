@@ -8315,6 +8315,977 @@ body {
 /* LOC picker section */
 .home-loc-section { margin: 0 0 3rem; }
 
+/* "Not currently in a program?" section on home page */
+.home-stage-section {
+  margin: 0 0 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.home-stage-sub {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+  max-width: 62ch;
+}
+.home-stage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 900px) { .home-stage-grid { grid-template-columns: 1fr; } }
+.home-stage-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.15rem 1.2rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  position: relative;
+}
+.home-stage-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--ink-soft);
+}
+.home-stage-card-prepare { border-left: 3px solid var(--rose); }
+.home-stage-card-discharged { border-left: 3px solid var(--blue); }
+.home-stage-card-longterm { border-left: 3px solid #8fa88a; }
+.home-stage-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+.home-stage-body { flex: 1; }
+.home-stage-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 0.4rem;
+  line-height: 1.25;
+}
+.home-stage-body p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.home-stage-arrow {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+  padding-top: 0.25rem;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+.home-stage-card:hover .home-stage-arrow {
+  color: var(--charcoal);
+  transform: translateX(3px);
+}
+
+/* Sidebar external link variant */
+.sidebar-nav-item-external {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  background: none;
+  border: none;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.sidebar-nav-item-external:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+}
+.sidebar-nav-external-icon {
+  margin-left: auto;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+/* Stage stub screens (Preparing for admission, Recently discharged) */
+.stage-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.stage-screen-header {
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+.stage-screen-header .section-label {
+  color: var(--rose);
+  margin: 0 0 0.4rem;
+}
+.stage-screen-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+  max-width: 28ch;
+}
+.stage-screen-lede {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 64ch;
+}
+.stage-stub-card {
+  padding: 1.2rem 1.4rem;
+  background: rgba(247, 240, 234, 0.5);
+  border: 1px solid rgba(201, 160, 138, 0.3);
+  border-left: 3px solid var(--rose);
+  border-radius: var(--radius-md);
+}
+.stage-stub-card .section-label {
+  color: var(--rose);
+  margin: 0 0 0.5rem;
+}
+.stage-stub-card p {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 64ch;
+}
+.stage-pointers .section-label {
+  color: var(--rose);
+  margin: 0 0 0.5rem;
+}
+.stage-pointers-intro {
+  margin: 0 0 1.2rem;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 64ch;
+}
+.stage-pointers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+@media (max-width: 800px) { .stage-pointers-grid { grid-template-columns: 1fr; } }
+.stage-pointer-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.05rem 1.15rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  color: var(--ink);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.stage-pointer-card:hover {
+  background: rgba(247, 240, 234, 0.35);
+  border-color: var(--ink-soft);
+  transform: translateY(-1px);
+}
+.stage-pointer-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+.stage-pointer-body { flex: 1; }
+.stage-pointer-body h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 0.35rem;
+}
+.stage-pointer-body p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.stage-pointer-arrow {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+  padding-top: 0.3rem;
+}
+.stage-pointer-card:hover .stage-pointer-arrow { color: var(--charcoal); }
+
+/* ─── Preparing for admission screen ─── */
+.prepare-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.prepare-hero {
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+.prepare-hero .section-label {
+  color: var(--rose);
+  margin: 0 0 0.4rem;
+}
+.prepare-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.3rem);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 1.1rem;
+  line-height: 1.18;
+  max-width: 26ch;
+}
+.prepare-hero-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  max-width: 64ch;
+}
+.prepare-hero-body p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.prepare-johanna-open {
+  padding: 1.3rem 1.5rem 1.4rem;
+  background: rgba(247, 240, 234, 0.55);
+  border: 1px solid rgba(201, 160, 138, 0.28);
+  border-left: 3px solid var(--rose);
+  border-radius: var(--radius-md);
+}
+.prepare-johanna-open .section-label {
+  color: var(--rose);
+  margin: 0 0 0.55rem;
+}
+.prepare-johanna-open blockquote {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--charcoal);
+  font-style: italic;
+  max-width: 64ch;
+}
+.prepare-johanna-signoff {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.prepare-block { margin: 0; }
+.prepare-block > h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+.prepare-block-intro {
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 64ch;
+}
+.prepare-block-light { padding-top: 0.5rem; }
+
+/* Two scenario cards */
+.prepare-scenarios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 1100px) { .prepare-scenarios { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 880px) { .prepare-scenarios { grid-template-columns: 1fr; } }
+.prepare-scenario-card {
+  padding: 1.2rem 1.35rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--blue);
+}
+.prepare-scenario-card:nth-child(1) { border-left-color: var(--rose); }
+.prepare-scenario-card:nth-child(3) { border-left-color: #8fa88a; }
+.prepare-scenario-eyebrow {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 600;
+}
+.prepare-scenario-card:nth-child(2) .prepare-scenario-eyebrow { color: var(--blue); }
+.prepare-scenario-card:nth-child(3) .prepare-scenario-eyebrow { color: #5a7556; }
+.prepare-scenario-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 0.6rem;
+  line-height: 1.25;
+}
+.prepare-scenario-body {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.prepare-scenario-helps-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.prepare-scenario-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.prepare-scenario-card li { margin-bottom: 0.55rem; }
+
+/* First 24 hours numbered list */
+.prepare-first-24 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: prepare-step;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.prepare-first-24 li {
+  padding: 1rem 1.15rem 1rem 3rem;
+  background: rgba(247, 240, 234, 0.4);
+  border: 1px solid rgba(201, 160, 138, 0.22);
+  border-radius: var(--radius-md);
+  position: relative;
+  counter-increment: prepare-step;
+}
+.prepare-first-24 li::before {
+  content: counter(prepare-step);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--rose);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+}
+.prepare-first-24-lead {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  font-size: 0.93rem;
+  color: var(--ink);
+}
+.prepare-first-24-detail {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+/* Script cards (talking to your child) */
+.prepare-scripts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+.prepare-script-card {
+  padding: 1.05rem 1.25rem 1.15rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.prepare-script-situation {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--rose);
+}
+.prepare-script-line {
+  margin: 0 0 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(247, 240, 234, 0.55);
+  border-left: 3px solid var(--rose);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--charcoal);
+  font-style: italic;
+}
+.prepare-script-note {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* Pack list */
+.prepare-pack-list {
+  margin: 0 0 1rem;
+  padding: 1rem 1.15rem 1rem 2.6rem;
+  background: rgba(247, 240, 234, 0.4);
+  border: 1px solid rgba(201, 160, 138, 0.22);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.prepare-pack-list li { margin-bottom: 0.45rem; }
+.prepare-pack-list li:last-child { margin-bottom: 0; }
+.prepare-pack-note {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  font-style: italic;
+  max-width: 62ch;
+}
+
+/* Rest of life grid */
+.prepare-rest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.95rem;
+}
+@media (max-width: 800px) { .prepare-rest-grid { grid-template-columns: 1fr; } }
+.prepare-rest-card {
+  padding: 1rem 1.2rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.prepare-rest-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin: 0 0 0.5rem;
+}
+.prepare-rest-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* Holding yourself - prose block */
+.prepare-holding-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 64ch;
+}
+.prepare-holding-body p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* What this isn't */
+.prepare-isnt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.3rem;
+}
+.prepare-isnt-item {
+  padding: 0.85rem 1.1rem;
+  background: rgba(127, 168, 184, 0.05);
+  border: 1px solid rgba(127, 168, 184, 0.22);
+  border-left: 3px solid var(--blue);
+  border-radius: var(--radius-md);
+}
+.prepare-isnt-lead {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--charcoal);
+}
+.prepare-isnt-detail {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.prepare-isnt-pointers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.prepare-isnt-pointer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--ink);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.prepare-isnt-pointer:hover {
+  background: rgba(247, 240, 234, 0.45);
+  border-color: var(--ink-soft);
+  transform: translateX(2px);
+}
+
+/* Closing note */
+.prepare-closing-note {
+  padding: 1.3rem 1.5rem;
+  background: rgba(247, 240, 234, 0.5);
+  border: 1px solid rgba(201, 160, 138, 0.3);
+  border-left: 3px solid var(--rose);
+  border-radius: var(--radius-md);
+}
+.prepare-closing-note p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--charcoal);
+  font-style: italic;
+  max-width: 64ch;
+}
+
+/* ─── Recently Discharged screen ─── */
+.discharged-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.discharged-hero {
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+.discharged-hero .section-label {
+  color: var(--rose);
+  margin: 0 0 0.4rem;
+}
+.discharged-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.3rem);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 1.1rem;
+  line-height: 1.18;
+  max-width: 26ch;
+}
+.discharged-hero-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  max-width: 64ch;
+}
+.discharged-hero-body p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.discharged-block { margin: 0; }
+.discharged-block > h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+.discharged-block-intro {
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 64ch;
+}
+.discharged-block-light { padding-top: 0.5rem; }
+
+/* Scenario cards (4-up: 3 full, 1 pointer) */
+.discharged-scenarios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 880px) { .discharged-scenarios { grid-template-columns: 1fr; } }
+.discharged-scenario-card {
+  padding: 1.2rem 1.35rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--blue);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--ink);
+}
+.discharged-scenario-card:nth-child(1) { border-left-color: var(--rose); }
+.discharged-scenario-card:nth-child(2) { border-left-color: var(--blue); }
+.discharged-scenario-card:nth-child(3) { border-left-color: #8fa88a; }
+.discharged-scenario-card:nth-child(4) { border-left-color: #b89968; }
+.discharged-scenario-eyebrow {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 600;
+}
+.discharged-scenario-card:nth-child(2) .discharged-scenario-eyebrow { color: var(--blue); }
+.discharged-scenario-card:nth-child(3) .discharged-scenario-eyebrow { color: #5a7556; }
+.discharged-scenario-card:nth-child(4) .discharged-scenario-eyebrow { color: #8a6f4d; }
+.discharged-scenario-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 0.6rem;
+  line-height: 1.25;
+}
+.discharged-scenario-body {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.discharged-scenario-helps-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.discharged-scenario-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.discharged-scenario-card li { margin-bottom: 0.55rem; }
+
+/* Pointer-variant scenario card (IOP discharge → OPT app) */
+.discharged-scenario-pointer {
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.discharged-scenario-pointer:hover {
+  background: rgba(247, 240, 234, 0.4);
+  border-color: var(--ink-soft);
+  transform: translateY(-1px);
+}
+.discharged-scenario-pointer-action {
+  margin: auto 0 0;
+  padding: 0.6rem 0.85rem;
+  background: rgba(184, 153, 104, 0.12);
+  border: 1px solid rgba(184, 153, 104, 0.35);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #8a6f4d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* First-week numbered list */
+.discharged-first-week {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: discharged-step;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.discharged-first-week li {
+  padding: 1rem 1.15rem 1rem 3rem;
+  background: rgba(247, 240, 234, 0.4);
+  border: 1px solid rgba(201, 160, 138, 0.22);
+  border-radius: var(--radius-md);
+  position: relative;
+  counter-increment: discharged-step;
+}
+.discharged-first-week li::before {
+  content: counter(discharged-step);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--rose);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+}
+.discharged-first-week-lead {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  font-size: 0.93rem;
+  color: var(--ink);
+}
+.discharged-first-week-detail {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+/* What recovery actually looks like - prose */
+.discharged-normal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 64ch;
+}
+.discharged-normal-body p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* Drift grid: 3 columns (wait/call this week/call today) */
+.discharged-drift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 1100px) { .discharged-drift-grid { grid-template-columns: 1fr; } }
+.discharged-drift-col {
+  padding: 1rem 1.15rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.discharged-drift-col-1 { border-left: 3px solid #8fa88a; }
+.discharged-drift-col-2 { border-left: 3px solid #b89968; }
+.discharged-drift-col-3 { border-left: 3px solid #b0665c; }
+.discharged-drift-col h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 0.4rem;
+}
+.discharged-drift-col-1 h3 { color: #5a7556; }
+.discharged-drift-col-2 h3 { color: #8a6f4d; }
+.discharged-drift-col-3 h3 { color: #a8534b; }
+.discharged-drift-intro {
+  margin: 0 0 0.85rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  line-height: 1.55;
+}
+.discharged-drift-col ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.discharged-drift-col li { margin-bottom: 0.45rem; }
+
+/* Script cards */
+.discharged-scripts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+.discharged-script-card {
+  padding: 1.05rem 1.25rem 1.15rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.discharged-script-situation {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--rose);
+}
+.discharged-script-line {
+  margin: 0 0 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(247, 240, 234, 0.55);
+  border-left: 3px solid var(--rose);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--charcoal);
+  font-style: italic;
+}
+.discharged-script-note {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* Talking to everyone else - grid */
+.discharged-everyone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.95rem;
+}
+@media (max-width: 800px) { .discharged-everyone-grid { grid-template-columns: 1fr; } }
+.discharged-everyone-card {
+  padding: 1rem 1.2rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.discharged-everyone-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin: 0 0 0.5rem;
+}
+.discharged-everyone-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* Your own state - prose */
+.discharged-state-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 64ch;
+}
+.discharged-state-body p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* What this isn't */
+.discharged-isnt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.3rem;
+}
+.discharged-isnt-item {
+  padding: 0.85rem 1.1rem;
+  background: rgba(127, 168, 184, 0.05);
+  border: 1px solid rgba(127, 168, 184, 0.22);
+  border-left: 3px solid var(--blue);
+  border-radius: var(--radius-md);
+}
+.discharged-isnt-lead {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--charcoal);
+}
+.discharged-isnt-detail {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.discharged-isnt-pointers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.discharged-isnt-pointer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--ink);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.discharged-isnt-pointer:hover {
+  background: rgba(247, 240, 234, 0.45);
+  border-color: var(--ink-soft);
+  transform: translateX(2px);
+}
+
+/* Closing note */
+.discharged-closing-note {
+  padding: 1.3rem 1.5rem;
+  background: rgba(247, 240, 234, 0.5);
+  border: 1px solid rgba(201, 160, 138, 0.3);
+  border-left: 3px solid var(--rose);
+  border-radius: var(--radius-md);
+}
+.discharged-closing-note p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--charcoal);
+  font-style: italic;
+  max-width: 64ch;
+}
+
+
 .home-section-title {
   font-family: var(--font-display);
   font-size: 1.65rem;
@@ -10333,9 +11304,12 @@ body {
       ],
     },
     {
-      label: "Just arrived",
+      label: "Where you are in the journey",
       items: [
         { id: "if-start", label: "If this is the start" },
+        { id: "prepare-admission", label: "Preparing for admission" },
+        { id: "recently-discharged", label: "Recently discharged" },
+        { id: "long-term-recovery", label: "Long-term recovery", externalUrl: "https://phase0afp.netlify.app" },
       ],
     },
     {
@@ -10422,6 +11396,8 @@ body {
     home: "Home",
     "where-you-are": "Where you are",
     "if-start": "If this is the start",
+    "prepare-admission": "Preparing for admission",
+    "recently-discharged": "Recently discharged",
     "recovery-work": "Parent Recovery Work",
     "skill-building": "Skill Building",
     "across-households": "Across Households",
@@ -17133,6 +18109,373 @@ body {
   };
 
   // ─────────────────────────────────────────────────────────────────────
+  // PREPARING FOR ADMISSION — content for the days/hours before a bed.
+  // Two primary scenarios: researching from home, or waiting in an ER.
+  // ─────────────────────────────────────────────────────────────────────
+
+  const PREPARE_INTRO = [
+    "The team has named a level of care. Maybe it was a clinical phone call you took on your lunch break. Maybe it was an ER doctor at 11pm. Either way, your child needs more than what you can hold at home right now, and the next thing that has to happen is admission. Somewhere. Soon.",
+    "This page is for that in-between. The hours or days between hearing 'they need higher care' and your child actually being in a bed. It is one of the most disorienting stretches in this whole journey. You are doing emergency research while keeping the rest of your life running. You are negotiating insurance, geography, your kid's resistance, your own fear. You are making decisions that will shape the next weeks of your family's life, in the smallest window you have ever made decisions in.",
+    "What this page tries to do is hold the disorientation while you do the work. There is a lot below. Read what helps. Skip what doesn't.",
+  ];
+
+  const PREPARE_JOHANNA_OPEN = "I remember the in-between. I remember sitting in the car after the appointment where they told us, looking at my phone, and not knowing whether to call the program first or call my husband first or just sit there for a minute. There is no rulebook for this part. There is only the next thing. And then the next one. That is what this page is.";
+
+  const PREPARE_SCENARIO_CARDS = [
+    {
+      eyebrow: "Scenario one",
+      title: "You are researching from home",
+      body: "The team named a level of care. You went home. There is no immediate medical emergency, but the clock is real because the longer you wait, the worse the disorder gets and the more your insurance coverage may shift. You have hours-to-days to find a center, navigate intake, and get your kid there.",
+      whatHelps: [
+        "Treat this like a job for the next 48-72 hours. Block calls in your calendar. Tell your boss what you can. Step out of as much regular life as possible.",
+        "Use the Provider Call Log to track who you call, what they say, and when they have a bed. Memory will fail you under stress, and you'll be calling 6-15 places.",
+        "Get your child's medical records (recent labs, growth chart, current weight if available, list of medications) ready to send. Most intake processes need them.",
+        "Start the insurance call early, in parallel with calling centers. Insurance approvals often take longer than bed availability.",
+      ],
+    },
+    {
+      eyebrow: "Scenario two",
+      title: "You are in an ER waiting for a bed",
+      body: "Your kid was admitted to the ER for medical instability, a behavioral emergency, or both. The ER has stabilized them and is now searching for a bed at an appropriate facility. You may be there for hours, you may be there for days. You may be sent home to wait. The pace is not yours to set.",
+      whatHelps: [
+        "If the ER social worker is helping with placement, ask them directly: 'What centers are you calling? What's the realistic timeline? Where are we on the list?'",
+        "If you have any voice in where they go, say so now. ER social workers move kids to the first available bed by default. Sometimes that's right. Sometimes it isn't. Your input matters.",
+        "Eat. Charge your phone. If someone offers to bring you food or a charger, say yes. You are not okay, but you have to keep functioning.",
+        "Find out the visiting and contact rules for wherever they end up before they leave the ER. You may not get clear answers for several days otherwise.",
+      ],
+    },
+    {
+      eyebrow: "Scenario three",
+      title: "The bed is confirmed. Admission is hours or days away.",
+      body: "You have a date. You know the program. You know roughly when you are walking your child in the door. The research is over, the worst phone calls are behind you, and now the longest hours of your life are ahead of you. This stretch is its own kind of hard. The waiting is almost done, and somehow that makes it heavier.",
+      whatHelps: [
+        "Keep the household running on as much normal as you can. A walk, a regular dinner, a movie. Long ceremonial goodbyes ahead of admission tend to escalate, not soothe. Short bursts of normal are more useful than a 36-hour farewell.",
+        "Have a plan for the morning of, not just a vibe. What time you leave the house. Who drives. Whether your kid eats first, or eats on the way, or doesn't eat. Whether anyone is coming with you. These small decisions will be hard to make in the moment. Decide them the night before.",
+        "Expect your kid to react in the hours before admission. Some kids escalate symptoms (to communicate distress or to argue they don't need to go). Some kids withdraw and go silent. Some kids are unsettlingly compliant. None of these are evidence about whether treatment will work. They are reactions to a real and hard thing.",
+        "Do not negotiate during this window. The hardest moment is when your kid asks for one more day, or one more meal at home, or to wait until after the school dance. The answer is no. The plan is the plan. Saying yes to a bargain now makes admission harder for everyone, especially them.",
+        "Plan for the drive home, alone. Most parents underestimate this part. The drive back from drop-off is one of the hardest hours of the whole process. Have something lined up. A call with someone who knows. A specific food. A place that isn't your house if home feels unbearable. Not back to work. Not errands. Something gentle.",
+      ],
+    },
+  ];
+
+  const PREPARE_FIRST_24 = {
+    title: "What to do in the first 24 hours",
+    intro: "Roughly ordered. Some will not apply to your situation. Skip those.",
+    items: [
+      { lead: "Tell the team you accept their recommendation", detail: "Even if you have questions, even if you want a second opinion (which you can still get), say out loud to the clinician who recommended higher care: 'We accept this. What do we do next?' That sentence starts the referral process and is often what unlocks the case manager or social worker who will help you find a bed." },
+      { lead: "Ask: where do you usually refer?", detail: "Most outpatient teams have relationships with specific programs. Those programs often have streamlined intake for referred patients. Ask: 'What programs do you usually refer to? Can you call them on our behalf?' This shortens the runway." },
+      { lead: "Call your insurance", detail: "Member services line, on the back of your card. Tell them: 'My child needs (level of care). Which in-network facilities cover this? What pre-authorization do I need?' Write down the rep's name, the date, and the reference number for the call. Insurance loses calls; you will need this record." },
+      { lead: "Open the Provider Call Log in this app", detail: "Add an entry for every center the team mentioned, plus any you find through insurance. Capture the contact info as you go. You will lose track otherwise. The Finding Care → Choosing the right next step page has the framework for evaluating each one." },
+      { lead: "Tell one person", detail: "A spouse, a partner, a parent, a friend who has been through ED treatment, your therapist. One person who knows what is happening, so you do not have to carry it alone in the next hours. Not the group text. One person." },
+      { lead: "Pack a small bag", detail: "Even if admission is days away. Even if you do not know where they will end up. (See the pack list below.) Having the bag ready means when the call comes, you are not packing in panic at 6am." },
+      { lead: "Decide what you tell your other children", detail: "If you have other kids, they will notice the phone calls, the closed-door conversations, the tone. You do not need a full briefing. You do need a short sentence. (Scripts below.)" },
+      { lead: "Sleep, if you can", detail: "The next 24-72 hours will be harder if you do not. Even four hours is something. Even if you have to take something to sleep. Tell the prescribing doctor what is going on; they will usually help." },
+    ],
+  };
+
+  const PREPARE_TALKING_TO_YOUR_CHILD = {
+    title: "Talking to your child",
+    intro: "The conversation about going into higher care is one of the hardest you will ever have. Two things to know going in. First, you are not negotiating. The team has made a clinical call. Your job is to deliver the information, not debate it. Second, your child's reaction is not the same as their consent. They do not have to agree. They do have to go.",
+    framings: [
+      {
+        situation: "Telling them for the first time",
+        line: "I have something to tell you that is going to be hard. Your team and your doctors are telling us you need a higher level of care. We are going to find the right place. I am not going to make you do this alone, but it is happening.",
+        note: "Short. Direct. No long preamble. They will hear the first three sentences. Make those count.",
+      },
+      {
+        situation: "When they refuse",
+        line: "I hear you. You do not want this. I understand. And it is happening. This is not a punishment. This is what your body and your brain need right now. I am going to be with you every step of the way that I can be.",
+        note: "Do not argue the medical facts. Do not list symptoms. Do not try to convince them. Acknowledge, hold the line, name what is happening.",
+      },
+      {
+        situation: "When they bargain ('I'll eat at home, I'll do anything')",
+        line: "I know you mean that right now. The reason we are at this point is that home has not been enough. That is not your fault. It is information about what your body needs. We are going to a place that can give you more than I can.",
+        note: "Bargaining is the disorder. It will say anything in the moment. The bargain will not hold once the pressure drops. Stay with the plan.",
+      },
+      {
+        situation: "When they rage",
+        line: "You can be furious with me. I will not take it personally. I am still going to take you. I love you and I am still going to take you.",
+        note: "Rage at this moment is grief, fear, and the disorder all at once. None of it needs your defense. Stay calm. Stay close. Stay on plan.",
+      },
+      {
+        situation: "When they go silent",
+        line: "I am here when you want to talk. I am also going to keep moving forward with the plan. You do not have to say anything right now.",
+        note: "Silence may not be agreement and may not be defiance. It may be processing. Do not press for a verbal yes. Move forward.",
+      },
+    ],
+  };
+
+  const PREPARE_PACK_LIST = {
+    title: "A small bag",
+    intro: "Most programs send a list of what to bring and not bring once admission is confirmed. This is a small starter bag you can have ready before the list arrives. Do not pack the whole house. Most things you cannot bring anyway, and your child will not be there as long as the suitcase implies.",
+    items: [
+      "Insurance card and a photo of it",
+      "Photo ID for your child if they have one (passport, school ID)",
+      "List of current medications with doses, written down (not just in your phone)",
+      "Recent medical records if you have them in hand (otherwise the program will request them)",
+      "Phone charger (the program will tell you whether phones are allowed; either way, the charger is needed)",
+      "A few changes of comfortable clothes (no strings, drawstrings, or anything fitness-branded — most programs restrict these)",
+      "Sneakers or slip-ons without laces",
+      "Toiletries in clear bottles (no glass, no razors, no aerosols — programs vary, but assume restriction)",
+      "A book or two, no journal yet (programs often provide one or restrict outside notebooks)",
+      "A small comfort item if they are young or if the team has cleared it (stuffed animal, photo)",
+      "Snacks: NO. Programs will not allow outside food.",
+      "Cash: usually not needed and often not allowed",
+    ],
+    note: "When the program confirms intake, they will send their own list. Whatever they send overrides what is above. The point of this list is to have something ready before the list arrives.",
+  };
+
+  const PREPARE_REST_OF_LIFE = {
+    title: "The rest of your life is still happening",
+    intro: "Work, other kids, the household, your marriage, your own health. None of it is paused while you do this. A few principles that may help.",
+    cards: [
+      {
+        title: "Work",
+        body: "Tell your manager something. Not necessarily everything, but enough that they know you are dealing with a medical emergency in your family and your availability is going to be reduced for an indeterminate window. FMLA may apply if you are in the US — the HR department or hr.gov has the specifics. Do not try to handle this without saying anything; it will catch up with you when admission lands at 7am on a Tuesday.",
+      },
+      {
+        title: "Other children",
+        body: "Tell them a short, true thing. 'Your sibling is sick and needs to go to a special program for a while. They are going to be okay. I am going to be on the phone a lot for the next few days. I love you. I am here.' Then keep showing up for their routines as much as you can. Their stability matters too, and they will notice your stress.",
+      },
+      {
+        title: "Your co-parent",
+        body: "If you have one, this is the moment to align. Sit down or get on the phone. Agree on what you are telling people. Agree on who is doing which calls. Agree on what you are saying to your kid. If you cannot agree, agree on what you are not going to argue about in front of your kid this week. Disagreements can be worked out later. Right now, you need one front.",
+      },
+      {
+        title: "The household",
+        body: "The dishes will not get done. The laundry will pile. The mail will accumulate. That is fine. If you can ask one person to bring meals or check the mail for the next week, do it. If not, the house will keep until admission is settled. Nothing in the house is more urgent than what you are doing right now.",
+      },
+      {
+        title: "Your own body",
+        body: "You will forget to eat. You will not sleep well. You may feel physical sickness. Drink water. Eat something even if you do not feel like it. Do not drink to manage the night. Take the medications you are already on. If you have a therapist, message them today.",
+      },
+    ],
+  };
+
+  const PREPARE_HOLDING_YOURSELF = {
+    title: "Holding yourself",
+    body: [
+      "Two things will happen to you in this stretch. The first is panic. Real, physical, hard-to-think-through panic. The second is guilt. Some version of 'I should have seen this sooner' or 'I should have done more' or 'how did I let this get this bad.' Both are coming. They are not signs of anything wrong with you. They are how the body responds to a real emergency involving your child.",
+      "What helps with the panic: short bursts of action. Make one call. Send one email. Pack one bag. Do not try to think the whole problem at once. The next thing is the only thing.",
+      "What helps with the guilt: not arguing with it. Your brain is going to tell you stories about what you missed and what you should have done. Do not try to win the argument. Just name it: 'I am having a guilt thought right now.' Then go back to the next call. The thought will pass. Then come back. Then pass again. The pattern is real and not solvable in the middle of a crisis.",
+      "What does not help: alcohol to take the edge off, doomscrolling treatment center reviews at 2am, calling family members who will spiral with you instead of helping you, trying to fix the whole family system before admission, blaming your spouse, blaming yourself, blaming the school, blaming social media. There will be time for all of those conversations. This is not it.",
+      "What does help: one person who knows. A short walk. Eating. Sleep when it is possible. A therapist on speed-dial. The next call. The next decision. One thing at a time.",
+    ],
+  };
+
+  const PREPARE_WHAT_THIS_ISNT = {
+    title: "What this page is not",
+    items: [
+      { lead: "This page is not where you choose a center", detail: "That work lives in Finding Care → Choosing the right next step. It has the principles, the questions to ask, and the green/red flags. Open it in a separate tab and work through it as you call." },
+      { lead: "This page is not where you track your calls", detail: "Use the Provider Call Log under Finding Care for that. It saves automatically. You can print it. You can share it with your co-parent." },
+      { lead: "This page is not for after admission", detail: "Once your child is admitted, go to 'If this is the start' for what to do in the first 72 hours of their stay." },
+      { lead: "This page is not a substitute for clinical guidance", detail: "Your child's outpatient team, the ER physician, the case manager — they have eyes on the specifics of your child's case. Listen to them. This page is for the orientation around the work they are guiding." },
+    ],
+  };
+
+  const PREPARE_CLOSING_NOTE = "If you are reading this in the in-between, I want you to know two things. First, the in-between ends. It feels infinite right now, and it isn't. You will get a call. There will be a bed. The waiting becomes something else. Second, what you are doing right now — the calls, the questions, the packing, the holding yourself together while you do all of it — that is the work. Nobody else can do it for you. You are doing it. — Johanna";
+
+  // ─────────────────────────────────────────────────────────────────────
+  // RECENTLY DISCHARGED — content for the parent in the first weeks home
+  // from a higher level of care. Four sub-scenarios: inpatient discharge,
+  // RTC discharge, PHP discharge, IOP-to-outpatient (pointer only).
+  // ─────────────────────────────────────────────────────────────────────
+
+  const DISCHARGED_INTRO = [
+    "Your child finished a program. You are home. Whatever you imagined this moment would feel like, it probably feels different. Lighter in some ways, heavier in others. The acute crisis has eased and something else has taken its place: the daily work of holding recovery in your own kitchen, on your own schedule, with no nurses in the hallway and no team meeting at 2pm.",
+    "This page is for the first weeks back. It is not a recap of what the program taught you. The program already taught you. This page is about the part that happens after the suitcase comes home, when the structure has to keep running and you are the one running it.",
+  ];
+
+  const DISCHARGED_SCENARIO_CARDS = [
+    {
+      eyebrow: "From inpatient",
+      title: "First weeks home from inpatient",
+      body: "Inpatient stays are often shorter than parents expect, sometimes just days. You came home with your child medically stabilized, with discharge paperwork and a follow-up appointment, and possibly without a clear sense of what is supposed to happen between today and that appointment. The home does not have the structure of the unit. You may not have had time to build a plan before they walked in the door.",
+      whatHelps: [
+        "Treat the first 72 hours as a structure-building window, not a normal-life window. Meals on a schedule, supervision at and after meals, no school yet, no big outings, no visitors. The First 72 Hours at Home page in Hold the System has the specifics.",
+        "Call the next provider on your list before the end of day one. If you do not have a next provider yet, the discharge clock has already started without you. Inpatient discharge often happens faster than the outpatient team can be assembled — start the team-building work now.",
+        "Watch the medical signs the inpatient team flagged on discharge. Whatever vitals, weight changes, or behaviors they told you to monitor, monitor them. Write them down. The data is what tells the next provider whether home is enough.",
+        "Do not assume stabilization is recovery. Inpatient stabilizes a body in crisis. The eating disorder is still there. Treatment now moves to a different level, and the next level needs to be set up immediately.",
+      ],
+    },
+    {
+      eyebrow: "From RTC",
+      title: "First weeks home from RTC",
+      body: "Residential is the longest, most structured environment your child will have been in. Weeks or months of every meal supervised, every behavior watched, every minute scheduled. Coming home is a step change for the whole household. You have a detailed discharge plan, an outpatient team that should already be in place, and the muscle memory the program built. The risk now is not crisis. The risk is the gap between unit-life and home-life, and the slow loosening that follows.",
+      whatHelps: [
+        "Reproduce the program's structure in your house, exactly, for the first two weeks. Meal times, supervision rules, bathroom protocols, screen rules, sleep rhythm. Not 'something like' the program. The program. Hold the System at Home is keyed to your level — open it now if you haven't.",
+        "Resist the urge to celebrate or let things 'breathe' in the first week. The week the family relaxes is the week the disorder finds an opening. Celebrate quietly, internally. Externally, keep the rhythm.",
+        "Use the Daily Observation Log. Every meal, every behavior, every hard moment. Send it to the outpatient team before each appointment. The data is the work and it is what catches drift before drift becomes a step-up conversation.",
+        "Expect a 'honeymoon' week one or two, then a harder week three or four. The pattern is common. The honeymoon is not evidence the disorder is gone. The hard week is not evidence the program failed. Both are part of the rhythm.",
+      ],
+    },
+    {
+      eyebrow: "From PHP",
+      title: "First weeks home from PHP",
+      body: "Your child was sleeping at home throughout PHP, so the transition is less stark. What changes is the daytime. The supervised meals at the program, the structured activities, the constant clinical eyes — all of that is now yours to provide or to replace. The kid who handled three program meals a day might find the kitchen at home harder. The disorder often shows up in the gap between program supervision and home supervision.",
+      whatHelps: [
+        "Map the daytime in writing for the first two weeks. What time meals are. Who is in the room. What happens after meals. What 'free time' looks like and what it does not look like. Where the bathroom rules are posted.",
+        "Treat the first two weeks as a step-down, not as 'back to normal.' Lighter than PHP, but not at the level of outpatient. School, sports, social events, sleepovers — talk to the outpatient team before adding any of these back in.",
+        "Watch the meals you did not see at PHP. Breakfast, snacks, dinner — these are where drift starts because the program never supervised them. The Daily Observation Log is built for tracking this.",
+        "If something does not feel right, tell the outpatient team that week. Do not wait for the next appointment. PHP-to-home drift is fast.",
+      ],
+    },
+    {
+      eyebrow: "From IOP",
+      title: "From IOP to outpatient",
+      body: "You are at the lightest end of higher care. Your child has been mostly home throughout IOP, with a few hours of programming a few days a week. Stepping down to outpatient means losing those few hours. The rhythm at home stays mostly the same, but the safety net is smaller. This stage of recovery has its own playbook — and it lives in a different app.",
+      isPointer: true,
+      pointerLabel: "Open the Phase 0 / Outpatient toolkit",
+      pointerUrl: "https://phase0afp.netlify.app",
+    },
+  ];
+
+  const DISCHARGED_FIRST_WEEK = {
+    title: "The first week home",
+    intro: "Some advice holds regardless of which level you came from. The first week is where the rhythm gets set, and what gets set in week one tends to be what runs for months.",
+    items: [
+      { lead: "Keep the world small", detail: "No visitors beyond your household. No big outings. No school yet unless the team has cleared it. The first week is for re-establishing a rhythm, not for resuming life." },
+      { lead: "Write the daily rhythm down and post it where you can see it", detail: "Meal times. Snack times. Bathroom rules. Supervision expectations. Bedtime. Not a vague sense — written words on the fridge. The disorder thrives in ambiguity. Specifics are protective." },
+      { lead: "Use the Daily Observation Log from day one", detail: "Every meal, every snack, every hard moment, every win. Send it to the outpatient team before each appointment. The team's read of how things are going at home depends on what you tell them." },
+      { lead: "Hold supervision rules even when it feels harsh", detail: "Sitting with them at meals, bathroom protocols, post-meal time together — the program had these for a reason. The reason did not disappear at discharge. The first week is not the week to negotiate down." },
+      { lead: "Eat with them, not around them", detail: "Family meals are part of the treatment. Not 'I'll grab something later while they eat.' You at the table, eating yourself, modeling the rhythm. Same food when possible. Not a performance, just a presence." },
+      { lead: "Sleep gets protected", detail: "Theirs and yours. Screens off at a fixed time. No late-night anything. Sleep is when the body repairs and when the brain restores. Compromising sleep in week one will cost you in week three." },
+      { lead: "Talk to the outpatient team early and often", detail: "Phone calls, portal messages, whatever the team's communication norm is. The first appointment is usually a week or two out — do not wait silently until then if something is off. Outpatient teams want to hear from you in week one." },
+    ],
+  };
+
+  const DISCHARGED_WHAT_NORMAL_LOOKS_LIKE = {
+    title: "What recovery actually looks like at home",
+    body: [
+      "The image you may have of 'recovered' is your child eating normally, in the kitchen, without drama, the way they did before. That image is not wrong, but it is also not the first week home. Or the second. Or sometimes the sixth.",
+      "What recovery actually looks like in the early weeks at home is meals that get eaten on a schedule, with supervision, sometimes with tension, sometimes without. It is your kid getting through a hard moment with you in the room. It is the eating disorder showing up at a particular snack and you holding the snack anyway. It is the team appointment where you say 'this week was hard' and the therapist says 'tell me about it' and you do. It is the slow rebuild of trust between your child's body and food, and between you and your own judgment about what is enough.",
+      "Some hard things you may see in the first weeks that are normal, not signs of failure: meal-time crying, food anxiety before meals, requests to change the meal plan, anger directed at you, withdrawal, claims that they 'feel better' and don't need this much structure, complaints about specific foods that were fine at the program. The team has seen all of this. Tell them what you are seeing; do not handle it alone.",
+      "Some things that are not normal and need a same-day call to the team: refusal of an entire meal or day of meals, increased bathroom rituals, observed purging or evidence of it, suicidal statements, rapid weight changes, signs of dizziness or fainting, dehydration, withdrawal from family that looks different from a hard mood, anything that scares you. Trust the gut. Same-day call. Do not wait for the appointment.",
+    ],
+  };
+
+  const DISCHARGED_DRIFT = {
+    title: "When to worry, when to wait",
+    intro: "Most parents underestimate small drift and overreact to single hard moments. Both are common. The framework below is what helped me sort one from the other.",
+    columns: [
+      {
+        heading: "Wait and watch (one event)",
+        intro: "These can be hard. They are also normal in the first weeks home. One occurrence is information, not a pattern.",
+        items: [
+          "A single meal that was harder than the others",
+          "Crying or anxiety before a meal but the meal still gets eaten",
+          "One bad night of sleep",
+          "A specific food challenge that didn't go well, with the rest of the day on plan",
+          "A hard conversation with you or a sibling",
+          "A bad weigh-in that's still in the expected range",
+        ],
+      },
+      {
+        heading: "Call the team (pattern)",
+        intro: "Three days of any of these, or two of them happening together, means the rhythm is slipping. Tell the team this week.",
+        items: [
+          "Multiple meals getting smaller, slower, or harder",
+          "Repeated bathroom visits longer than the protocol allows",
+          "Increased movement, exercise, or restlessness",
+          "Withdrawal from family meals or shared rooms",
+          "Clothes getting looser, or kid asking about clothes more than usual",
+          "Sleep getting consistently shorter",
+          "Mood crashes that are not tracking to a specific event",
+        ],
+      },
+      {
+        heading: "Call today (urgent)",
+        intro: "These are not 'wait until the next appointment.' Same day, even after hours, even on a weekend.",
+        items: [
+          "Refusal of an entire meal or full day of meals",
+          "Observed purging or strong evidence of it",
+          "Statements about self-harm or wanting to die",
+          "Fainting, severe dizziness, or signs of dehydration",
+          "Significant weight change in either direction",
+          "Anything that makes your gut say 'something is very wrong'",
+        ],
+      },
+    ],
+  };
+
+  const DISCHARGED_TALKING_TO_KID = {
+    title: "Talking to your child now that they are home",
+    intro: "The conversations at home are different from the conversations at the program. You are not a clinician. You are not running their treatment. You are running their household, which is also part of their treatment. A few scripts for the moments that come up.",
+    framings: [
+      {
+        situation: "When they push back on the structure",
+        line: "I hear you. The program rules were a lot. The home rules feel like a lot too. We are doing what the team asked us to do. This is not me being controlling. This is me following the plan the team built with us.",
+        note: "Do not get into a debate about whether each rule is necessary. The team built the plan. You are running the plan. The rules are the plan.",
+      },
+      {
+        situation: "When they say they are fine, they do not need this much support",
+        line: "I am so glad you feel better. I really am. I also know your team thinks we are right where we should be with this level of support. We can ask them together at the next appointment whether anything should change.",
+        note: "Defer to the team rather than to your own assessment. The kid feeling better is good. It is not the criterion for stepping down structure at home.",
+      },
+      {
+        situation: "When they have a hard moment and ask you to back off",
+        line: "I am not going anywhere. You can be mad at me. You can ask me to leave the room and I'll stay just outside. I am here.",
+        note: "Hard moments are not the time to renegotiate supervision. Stay. The disorder wants you to step back. Recovery wants you to stay.",
+      },
+      {
+        situation: "When they thank you",
+        line: "I love you. This was hard for both of us. I am proud of how hard you are working.",
+        note: "Receive it. Do not turn it into a teaching moment or a future warning. Just be with them.",
+      },
+      {
+        situation: "When they ask when this is going to be over",
+        line: "I do not know the exact answer. I know we are doing the work, and your team is helping us know what comes next. We are not at the end yet. We are also not at the beginning anymore. We are in the middle, and the middle is where the work is.",
+        note: "Honesty without dread. Do not promise a timeline. Do not predict the future. Name where you are.",
+      },
+    ],
+  };
+
+  const DISCHARGED_TALKING_TO_EVERYONE = {
+    title: "Talking to everyone else",
+    cards: [
+      {
+        title: "Siblings",
+        body: "Tell the other kids in the house something true and short. 'Your sibling is home and is still in recovery. We are going to have some new rules around meals and bathrooms for a while. It is not punishment for anyone. It is what the doctors are asking us to do.' Then watch the siblings. Their week was hard too, and they will need attention that is not just about the recovering kid. The Across Households module has scripts for stepparents and other adults if your family setup is more complex.",
+      },
+      {
+        title: "School",
+        body: "If your child is heading back to school, the team has likely told you when and at what intensity. School Re-Entry has the playbook. The short version: tell one named contact at the school what is happening, get the supervision and accommodations written down, and do not let a teacher or coach negotiate them with your child without you in the room.",
+      },
+      {
+        title: "Extended family",
+        body: "Pick one person to be the family update channel. They get the updates and pass them along. You do not have to be the one explaining the situation to your mother-in-law, your kid's grandparents, your cousins. Tell people what they need to know to be safe around your kid (no body comments, no comments on what they are eating, no portion remarks, no 'you look so healthy' commentary) and let your update person handle the rest.",
+      },
+      {
+        title: "Friends and your community",
+        body: "You owe nobody an explanation. Some people will need to know enough to support you. Many do not need to know at all. A short sentence — 'we are dealing with a family medical thing, I'll loop you in when I can' — is enough for most people. Save the long conversations for the few people who can actually hold them.",
+      },
+    ],
+  };
+
+  const DISCHARGED_YOUR_OWN_STATE = {
+    title: "Your own state",
+    body: [
+      "You came down from a level of stress most people will never know. Discharge does not turn the stress off. It changes what the stress is about, and sometimes the body takes weeks to catch up with the new reality. You may find yourself crying for no reason. Sleeping badly. Sleeping too much. Eating strangely. Feeling jumpy. Feeling numb. Some combination of all of these in a single day.",
+      "This is not weakness and it is not a sign you cannot handle being home. It is the body finally getting to process what just happened. The acute weeks did not leave room for it. Now there is room and the body is using it.",
+      "What helps: a therapist of your own if you do not already have one, and seeing them soon. Movement, but not punishing movement. Sleep when you can get it. Food on a regular schedule, even if you do not feel hungry. One friend who knows. Time outside. The boring things. They are also the things that work.",
+      "What does not help: a glass of wine at the end of every day to take the edge off. Doomscrolling. Going back to work too fast to prove you are okay. Trying to be the cheerful one in the house for everyone else. Trying to figure out what happened, in detail, alone, at 2am.",
+      "You are also recovering. Different recovery than your child's. Same word.",
+    ],
+  };
+
+  const DISCHARGED_WHAT_THIS_ISNT = {
+    title: "What this page is not",
+    items: [
+      { lead: "This page is not the daily playbook", detail: "Hold the System at Home is keyed to the level of care your child most recently completed. Open it for the daily rhythm, the meal plan structure, the supervision rules, and the recovery-work content specific to that level." },
+      { lead: "This page is not the safety check", detail: "Safety for Homecoming has the safety planning, the home environment work, and the crisis plan. If safety is the active concern, that is where to go." },
+      { lead: "This page is not the step-down work", detail: "Prepare for Step-Down has the content for moving from one level to the next, including when to recognize that you may need to step back up. If the discharge you just completed was to a lower level of care and you are now thinking about what's next, that's the module." },
+      { lead: "This page is not the data tracker", detail: "Daily Observation Log captures what is happening at home meal by meal. It is the single most useful thing you can hand to the outpatient team. Start using it now if you are not already." },
+    ],
+  };
+
+  const DISCHARGED_CLOSING_NOTE = "Coming home from a program is not the end of treatment. It is the start of the part of treatment where you are the one running it. That is harder than the program was, in a different way. You will not feel like you know what you are doing for a while. That is normal. The team is still there. The tools are still here. Keep going. — Johanna";
+
+  // ─────────────────────────────────────────────────────────────────────
   // SAFETY EXPERIENCE — interactive content ported from Phase 1 OPT
   // ─────────────────────────────────────────────────────────────────────
 
@@ -22157,6 +23500,9 @@ body {
     home: "🏠",
     "where-you-are": "📍",
     "if-start": "🫂",
+    "prepare-admission": "🧳",
+    "recently-discharged": "🏡",
+    "long-term-recovery": "🌿",
     "recovery-work": "🌱",
     "skill-building": "🛠️",
     "across-households": "🏘️",
@@ -22217,14 +23563,28 @@ body {
                   : (isActive ? "Back to top" : null);
                 return html`
                   <div key=${item.id} className=${`sidebar-nav-row ${hasChildren ? "has-children" : ""} ${isExpanded ? "is-expanded" : ""}`}>
-                    <button
-                      className=${`sidebar-nav-item ${isActive ? 'is-active' : ''} ${childIsActive ? 'is-child-active' : ''}`}
-                      onClick=${() => onNavigate(item.id)}
-                      title=${tooltip}
-                    >
-                      <span className="sidebar-nav-emoji" aria-hidden="true">${SIDEBAR_NAV_EMOJI[item.id] || "•"}</span>
-                      <span className="sidebar-nav-label">${item.label}</span>
-                    </button>
+                    ${item.externalUrl ? html`
+                      <a
+                        href=${item.externalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="sidebar-nav-item sidebar-nav-item-external"
+                        title=${`${item.label} (opens in new tab)`}
+                      >
+                        <span className="sidebar-nav-emoji" aria-hidden="true">${SIDEBAR_NAV_EMOJI[item.id] || "•"}</span>
+                        <span className="sidebar-nav-label">${item.label}</span>
+                        <span className="sidebar-nav-external-icon" aria-hidden="true">↗</span>
+                      </a>
+                    ` : html`
+                      <button
+                        className=${`sidebar-nav-item ${isActive ? 'is-active' : ''} ${childIsActive ? 'is-child-active' : ''}`}
+                        onClick=${() => onNavigate(item.id)}
+                        title=${tooltip}
+                      >
+                        <span className="sidebar-nav-emoji" aria-hidden="true">${SIDEBAR_NAV_EMOJI[item.id] || "•"}</span>
+                        <span className="sidebar-nav-label">${item.label}</span>
+                      </button>
+                    `}
                     ${hasChildren ? html`
                       <button
                         type="button"
@@ -22824,6 +24184,285 @@ body {
   }
 
 
+  // ─── Stage screens: Preparing for admission, Recently discharged ─────
+  // These are stubs. Content goes here in a future session. For now they
+  // explain what's coming and point at existing modules that already help.
+
+  function PrepareAdmissionScreen({ onNavigate }) {
+    return html`
+      <div className="prepare-screen">
+        <header className="prepare-hero">
+          <p className="section-label">Where you are in the journey</p>
+          <h1>Preparing for admission</h1>
+          <div className="prepare-hero-body">
+            ${PREPARE_INTRO.map((p, i) => html`<p key=${i}>${p}</p>`)}
+          </div>
+        </header>
+
+        <section className="prepare-johanna-open">
+          <p className="section-label">A note from Johanna</p>
+          <blockquote>${PREPARE_JOHANNA_OPEN}</blockquote>
+          <p className="prepare-johanna-signoff">— Johanna</p>
+        </section>
+
+        <section className="prepare-block">
+          <h2>Which one is you</h2>
+          <p className="prepare-block-intro">There are two common shapes of this in-between. Read the one that matches your situation. You can come back for the other later if your situation changes.</p>
+          <div className="prepare-scenarios">
+            ${PREPARE_SCENARIO_CARDS.map((s, i) => html`
+              <article key=${i} className="prepare-scenario-card">
+                <p className="prepare-scenario-eyebrow">${s.eyebrow}</p>
+                <h3>${s.title}</h3>
+                <p className="prepare-scenario-body">${s.body}</p>
+                <p className="prepare-scenario-helps-label">What helps right now:</p>
+                <ul>
+                  ${s.whatHelps.map((it, j) => html`<li key=${j}>${it}</li>`)}
+                </ul>
+              </article>
+            `)}
+          </div>
+        </section>
+
+        <section className="prepare-block">
+          <h2>${PREPARE_FIRST_24.title}</h2>
+          <p className="prepare-block-intro">${PREPARE_FIRST_24.intro}</p>
+          <ol className="prepare-first-24">
+            ${PREPARE_FIRST_24.items.map((it, i) => html`
+              <li key=${i}>
+                <p className="prepare-first-24-lead">${it.lead}</p>
+                <p className="prepare-first-24-detail">${it.detail}</p>
+              </li>
+            `)}
+          </ol>
+        </section>
+
+        <section className="prepare-block">
+          <h2>${PREPARE_TALKING_TO_YOUR_CHILD.title}</h2>
+          <p className="prepare-block-intro">${PREPARE_TALKING_TO_YOUR_CHILD.intro}</p>
+          <div className="prepare-scripts">
+            ${PREPARE_TALKING_TO_YOUR_CHILD.framings.map((f, i) => html`
+              <article key=${i} className="prepare-script-card">
+                <p className="prepare-script-situation">${f.situation}</p>
+                <blockquote className="prepare-script-line">${f.line}</blockquote>
+                <p className="prepare-script-note">${f.note}</p>
+              </article>
+            `)}
+          </div>
+        </section>
+
+        <section className="prepare-block">
+          <h2>${PREPARE_PACK_LIST.title}</h2>
+          <p className="prepare-block-intro">${PREPARE_PACK_LIST.intro}</p>
+          <ul className="prepare-pack-list">
+            ${PREPARE_PACK_LIST.items.map((it, i) => html`<li key=${i}>${it}</li>`)}
+          </ul>
+          <p className="prepare-pack-note">${PREPARE_PACK_LIST.note}</p>
+        </section>
+
+        <section className="prepare-block">
+          <h2>${PREPARE_REST_OF_LIFE.title}</h2>
+          <p className="prepare-block-intro">${PREPARE_REST_OF_LIFE.intro}</p>
+          <div className="prepare-rest-grid">
+            ${PREPARE_REST_OF_LIFE.cards.map((c, i) => html`
+              <article key=${i} className="prepare-rest-card">
+                <h3>${c.title}</h3>
+                <p>${c.body}</p>
+              </article>
+            `)}
+          </div>
+        </section>
+
+        <section className="prepare-block">
+          <h2>${PREPARE_HOLDING_YOURSELF.title}</h2>
+          <div className="prepare-holding-body">
+            ${PREPARE_HOLDING_YOURSELF.body.map((p, i) => html`<p key=${i}>${p}</p>`)}
+          </div>
+        </section>
+
+        <section className="prepare-block prepare-block-light">
+          <h2>${PREPARE_WHAT_THIS_ISNT.title}</h2>
+          <div className="prepare-isnt-list">
+            ${PREPARE_WHAT_THIS_ISNT.items.map((it, i) => html`
+              <article key=${i} className="prepare-isnt-item">
+                <p className="prepare-isnt-lead">${it.lead}</p>
+                <p className="prepare-isnt-detail">${it.detail}</p>
+              </article>
+            `)}
+          </div>
+          <div className="prepare-isnt-pointers">
+            <button type="button" className="prepare-isnt-pointer" onClick=${() => onNavigate("finding-care-next-step")}>
+              <span>Open: Choosing the right next step</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button type="button" className="prepare-isnt-pointer" onClick=${() => onNavigate("finding-care-call-log")}>
+              <span>Open: Provider Call Log</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button type="button" className="prepare-isnt-pointer" onClick=${() => onNavigate("if-start")}>
+              <span>Open: If this is the start</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+
+        <aside className="prepare-closing-note">
+          <p>${PREPARE_CLOSING_NOTE}</p>
+        </aside>
+      </div>
+    `;
+  }
+
+  function RecentlyDischargedScreen({ onNavigate }) {
+    return html`
+      <div className="discharged-screen">
+        <header className="discharged-hero">
+          <p className="section-label">Where you are in the journey</p>
+          <h1>Recently discharged</h1>
+          <div className="discharged-hero-body">
+            ${DISCHARGED_INTRO.map((p, i) => html`<p key=${i}>${p}</p>`)}
+          </div>
+        </header>
+
+        <section className="discharged-block">
+          <h2>Which discharge is yours</h2>
+          <p className="discharged-block-intro">The first weeks back look different depending on which level of care you just completed. Read the one that matches your situation.</p>
+          <div className="discharged-scenarios">
+            ${DISCHARGED_SCENARIO_CARDS.map((s, i) => {
+              if (s.isPointer) {
+                return html`
+                  <a key=${i} className="discharged-scenario-card discharged-scenario-pointer"
+                     href=${s.pointerUrl} target="_blank" rel="noopener noreferrer">
+                    <p className="discharged-scenario-eyebrow">${s.eyebrow}</p>
+                    <h3>${s.title}</h3>
+                    <p className="discharged-scenario-body">${s.body}</p>
+                    <p className="discharged-scenario-pointer-action">
+                      <span>${s.pointerLabel}</span>
+                      <span aria-hidden="true">↗</span>
+                    </p>
+                  </a>
+                `;
+              }
+              return html`
+                <article key=${i} className="discharged-scenario-card">
+                  <p className="discharged-scenario-eyebrow">${s.eyebrow}</p>
+                  <h3>${s.title}</h3>
+                  <p className="discharged-scenario-body">${s.body}</p>
+                  <p className="discharged-scenario-helps-label">What helps right now:</p>
+                  <ul>
+                    ${s.whatHelps.map((it, j) => html`<li key=${j}>${it}</li>`)}
+                  </ul>
+                </article>
+              `;
+            })}
+          </div>
+        </section>
+
+        <section className="discharged-block">
+          <h2>${DISCHARGED_FIRST_WEEK.title}</h2>
+          <p className="discharged-block-intro">${DISCHARGED_FIRST_WEEK.intro}</p>
+          <ol className="discharged-first-week">
+            ${DISCHARGED_FIRST_WEEK.items.map((it, i) => html`
+              <li key=${i}>
+                <p className="discharged-first-week-lead">${it.lead}</p>
+                <p className="discharged-first-week-detail">${it.detail}</p>
+              </li>
+            `)}
+          </ol>
+        </section>
+
+        <section className="discharged-block">
+          <h2>${DISCHARGED_WHAT_NORMAL_LOOKS_LIKE.title}</h2>
+          <div className="discharged-normal-body">
+            ${DISCHARGED_WHAT_NORMAL_LOOKS_LIKE.body.map((p, i) => html`<p key=${i}>${p}</p>`)}
+          </div>
+        </section>
+
+        <section className="discharged-block">
+          <h2>${DISCHARGED_DRIFT.title}</h2>
+          <p className="discharged-block-intro">${DISCHARGED_DRIFT.intro}</p>
+          <div className="discharged-drift-grid">
+            ${DISCHARGED_DRIFT.columns.map((col, i) => html`
+              <article key=${i} className=${`discharged-drift-col discharged-drift-col-${i+1}`}>
+                <h3>${col.heading}</h3>
+                <p className="discharged-drift-intro">${col.intro}</p>
+                <ul>
+                  ${col.items.map((it, j) => html`<li key=${j}>${it}</li>`)}
+                </ul>
+              </article>
+            `)}
+          </div>
+        </section>
+
+        <section className="discharged-block">
+          <h2>${DISCHARGED_TALKING_TO_KID.title}</h2>
+          <p className="discharged-block-intro">${DISCHARGED_TALKING_TO_KID.intro}</p>
+          <div className="discharged-scripts">
+            ${DISCHARGED_TALKING_TO_KID.framings.map((f, i) => html`
+              <article key=${i} className="discharged-script-card">
+                <p className="discharged-script-situation">${f.situation}</p>
+                <blockquote className="discharged-script-line">${f.line}</blockquote>
+                <p className="discharged-script-note">${f.note}</p>
+              </article>
+            `)}
+          </div>
+        </section>
+
+        <section className="discharged-block">
+          <h2>${DISCHARGED_TALKING_TO_EVERYONE.title}</h2>
+          <div className="discharged-everyone-grid">
+            ${DISCHARGED_TALKING_TO_EVERYONE.cards.map((c, i) => html`
+              <article key=${i} className="discharged-everyone-card">
+                <h3>${c.title}</h3>
+                <p>${c.body}</p>
+              </article>
+            `)}
+          </div>
+        </section>
+
+        <section className="discharged-block">
+          <h2>${DISCHARGED_YOUR_OWN_STATE.title}</h2>
+          <div className="discharged-state-body">
+            ${DISCHARGED_YOUR_OWN_STATE.body.map((p, i) => html`<p key=${i}>${p}</p>`)}
+          </div>
+        </section>
+
+        <section className="discharged-block discharged-block-light">
+          <h2>${DISCHARGED_WHAT_THIS_ISNT.title}</h2>
+          <div className="discharged-isnt-list">
+            ${DISCHARGED_WHAT_THIS_ISNT.items.map((it, i) => html`
+              <article key=${i} className="discharged-isnt-item">
+                <p className="discharged-isnt-lead">${it.lead}</p>
+                <p className="discharged-isnt-detail">${it.detail}</p>
+              </article>
+            `)}
+          </div>
+          <div className="discharged-isnt-pointers">
+            <button type="button" className="discharged-isnt-pointer" onClick=${() => onNavigate("hold")}>
+              <span>Open: Hold the System at Home</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button type="button" className="discharged-isnt-pointer" onClick=${() => onNavigate("safety")}>
+              <span>Open: Safety for Homecoming</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button type="button" className="discharged-isnt-pointer" onClick=${() => onNavigate("stepdown")}>
+              <span>Open: Prepare for Step-Down</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button type="button" className="discharged-isnt-pointer" onClick=${() => onNavigate("daily-log")}>
+              <span>Open: Daily Observation Log</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+
+        <aside className="discharged-closing-note">
+          <p>${DISCHARGED_CLOSING_NOTE}</p>
+        </aside>
+      </div>
+    `;
+  }
+
   function HomeScreen({ currentLoc, onNavigate, onSwitchLoc }) {
     const moduleIcons = {
       understand: "🧭",
@@ -22919,6 +24558,55 @@ body {
                 ${currentLoc.id === loc.id ? html`<p className="loc-current-pill">Currently selected</p>` : null}
               </button>
             `)}
+          </div>
+        </section>
+
+        <section className="home-stage-section">
+          <h2 className="home-section-title">Not currently in a program?</h2>
+          <p className="home-stage-sub">
+            This app's content adapts to the four levels of care above. If your child is somewhere
+            else on the journey, here's where to start.
+          </p>
+          <div className="home-stage-grid">
+            <button
+              type="button"
+              className="home-stage-card home-stage-card-prepare"
+              onClick=${() => onNavigate("prepare-admission")}
+            >
+              <span className="home-stage-icon" aria-hidden="true">🧳</span>
+              <div className="home-stage-body">
+                <h3>Preparing for admission</h3>
+                <p>Your child has been told they need higher care. You are researching centers, waiting for a bed, or about to admit.</p>
+              </div>
+              <span className="home-stage-arrow" aria-hidden="true">→</span>
+            </button>
+
+            <button
+              type="button"
+              className="home-stage-card home-stage-card-discharged"
+              onClick=${() => onNavigate("recently-discharged")}
+            >
+              <span className="home-stage-icon" aria-hidden="true">🏡</span>
+              <div className="home-stage-body">
+                <h3>Recently discharged</h3>
+                <p>Your child finished a program in the last few weeks or months. The acute crisis has eased and the work has moved home.</p>
+              </div>
+              <span className="home-stage-arrow" aria-hidden="true">→</span>
+            </button>
+
+            <a
+              className="home-stage-card home-stage-card-longterm"
+              href="https://phase0afp.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="home-stage-icon" aria-hidden="true">🌿</span>
+              <div className="home-stage-body">
+                <h3>Holding recovery long-term</h3>
+                <p>Your child is months or years past acute treatment. Holding recovery at home is your work now. A different app handles this stage.</p>
+              </div>
+              <span className="home-stage-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </section>
 
@@ -24956,6 +26644,12 @@ body {
             onSwitchLoc=${handleHomeLocSelect}
           />
         `;
+      }
+      if (currentScreen === "prepare-admission") {
+        return html`<${PrepareAdmissionScreen} onNavigate=${handleNavigate} />`;
+      }
+      if (currentScreen === "recently-discharged") {
+        return html`<${RecentlyDischargedScreen} onNavigate=${handleNavigate} />`;
       }
       if (currentScreen === "finding-care") {
         return html`<${FindingCareLandingScreen} onNavigate=${handleNavigate} />`;
