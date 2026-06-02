@@ -1217,11 +1217,14 @@ body {
   .sidebar.is-collapsed .sidebar-nav-caret { display: flex !important; }
   .sidebar.is-collapsed .sidebar-nav-children { display: flex !important; }
 
-  /* Adjust main column padding so hamburger doesn't sit on content */
-  .main-col { padding-top: 3rem; }
-
-  /* Push the screen-shell content down so the hamburger doesn't overlap */
-  .screen-shell { padding-top: 0.5rem; }
+  /* Adjust top padding to clear the hamburger button (which sits at top: 0.85rem, 44px tall).
+     The hamburger needs ~3.5rem of space from the top. The screen-shell base has 3rem of
+     padding-top already, so on mobile we tighten the horizontal padding and bump top
+     slightly — total visible space-to-content is then ~3.75rem (~60px), enough to clear
+     the hamburger without leaving an empty top zone. */
+  .screen-shell {
+    padding: 3.75rem 1.25rem 2rem;
+  }
 }
 
 /* ─── Main column ─── */
