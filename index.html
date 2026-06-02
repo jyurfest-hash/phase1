@@ -1217,14 +1217,16 @@ body {
   .sidebar.is-collapsed .sidebar-nav-caret { display: flex !important; }
   .sidebar.is-collapsed .sidebar-nav-children { display: flex !important; }
 
-  /* Adjust top padding to clear the hamburger button (which sits at top: 0.85rem, 44px tall).
-     The hamburger needs ~3.5rem of space from the top. The screen-shell base has 3rem of
-     padding-top already, so on mobile we tighten the horizontal padding and bump top
-     slightly — total visible space-to-content is then ~3.75rem (~60px), enough to clear
-     the hamburger without leaving an empty top zone. */
+  /* Top padding on mobile is sized to just clear the hamburger button
+     (hamburger sits at top: 0.85rem, 44px tall, ends ~3.6rem from top edge).
+     Heroes/headers below this should not add extra top padding on mobile,
+     or content gets pushed way down the screen. */
   .screen-shell {
-    padding: 3.75rem 1.25rem 2rem;
+    padding: 2.75rem 1.25rem 2rem;
   }
+  /* Home hero has 3rem top padding on desktop; zero out on mobile */
+  .home-hero,
+  .home-hero.home-hero-centered { padding-top: 0.5rem; }
 }
 
 /* ─── Main column ─── */
