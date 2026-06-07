@@ -7291,6 +7291,63 @@ body {
   font-style: italic;
 }
 
+/* Meal Plan: shopping list */
+.meal-plan-shopping-card { background: white; border: 1px solid var(--line); border-left: 3px solid var(--sage); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-xs); }
+.meal-plan-shopping-card .section-label { color: #5a7556; }
+.meal-plan-shopping-card h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.25rem, 2.5vw, 1.55rem); color: var(--charcoal); margin: 0.2rem 0 0.6rem; }
+.meal-plan-shopping-helper { font-size: 0.9rem; line-height: 1.6; color: var(--ink-soft); max-width: 64ch; margin: 0 0 1.1rem; }
+.meal-plan-shopping-add { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.meal-plan-shopping-input { flex: 1; min-width: 0; font-family: var(--font-body); font-size: 0.92rem; color: var(--ink); padding: 0.6rem 0.75rem; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--paper); }
+.meal-plan-shopping-input:focus { outline: none; border-color: var(--rose); box-shadow: 0 0 0 3px rgba(201, 160, 138, 0.12); }
+.meal-plan-shopping-add-btn { flex-shrink: 0; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; color: white; background: var(--rose); border: 1px solid var(--rose); border-radius: var(--radius-sm); padding: 0.6rem 1.1rem; cursor: pointer; transition: background var(--transition); }
+.meal-plan-shopping-add-btn:hover:not([disabled]) { background: #b88f7a; }
+.meal-plan-shopping-add-btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+.meal-plan-shopping-toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.meal-plan-shopping-tool-btn { font-family: var(--font-body); font-size: 0.8rem; color: var(--ink-soft); background: white; border: 1px solid var(--line-strong); border-radius: 999px; padding: 0.4rem 0.85rem; cursor: pointer; transition: border-color var(--transition), color var(--transition); }
+.meal-plan-shopping-tool-btn:hover:not([disabled]) { border-color: var(--ink-soft); color: var(--charcoal); }
+.meal-plan-shopping-tool-btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.meal-plan-shopping-empty { font-size: 0.9rem; font-style: italic; color: var(--ink-muted); line-height: 1.6; margin: 0; }
+.meal-plan-shopping-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.meal-plan-shopping-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--line-soft); }
+.meal-plan-shopping-item:last-child { border-bottom: none; }
+.meal-plan-shopping-check { display: inline-flex; flex-shrink: 0; cursor: pointer; }
+.meal-plan-shopping-check input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--sage); cursor: pointer; }
+.meal-plan-shopping-item-text { flex: 1; min-width: 0; font-family: var(--font-body); font-size: 0.92rem; color: var(--ink); border: none; background: transparent; padding: 0.25rem 0.3rem; border-radius: var(--radius-xs); }
+.meal-plan-shopping-item-text:focus { outline: none; background: var(--paper-warm); }
+.meal-plan-shopping-item.is-checked .meal-plan-shopping-item-text { color: var(--ink-muted); text-decoration: line-through; text-decoration-color: var(--ink-faint); }
+.meal-plan-shopping-remove { flex-shrink: 0; font-size: 1.2rem; line-height: 1; color: var(--ink-faint); background: none; border: none; cursor: pointer; padding: 0.2rem 0.4rem; border-radius: var(--radius-xs); transition: color var(--transition); }
+.meal-plan-shopping-remove:hover { color: #a8534b; }
+
+/* Safe foods & go-to meals */
+.safe-food-card { background: white; border: 1px solid var(--line); border-left: 3px solid var(--rose); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-xs); }
+.safe-food-card .section-label { color: var(--rose); }
+.safe-food-card h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.25rem, 2.5vw, 1.55rem); color: var(--charcoal); margin: 0.2rem 0 0.6rem; }
+.safe-food-intro { margin: 0 0 1.2rem; }
+.safe-food-intro p { font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); margin: 0 0 0.6rem; max-width: 64ch; }
+.safe-food-intro p:last-child { margin-bottom: 0; }
+.safe-food-subhead { font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; color: var(--charcoal); margin: 1.4rem 0 0.3rem; }
+.safe-food-helper { font-size: 0.88rem; line-height: 1.6; color: var(--ink-soft); max-width: 64ch; margin: 0 0 0.85rem; }
+.safe-food-empty { font-size: 0.9rem; font-style: italic; color: var(--ink-muted); line-height: 1.6; margin: 0 0 0.85rem; }
+.safe-food-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.85rem; }
+.safe-food-row { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.85rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper); }
+.safe-food-fields { flex: 1; min-width: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.safe-food-fields-meal { grid-template-columns: 1fr 1fr 1fr; }
+.safe-food-field { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.safe-food-field > span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); }
+.safe-food-input { font-family: var(--font-body); font-size: 0.9rem; color: var(--ink); padding: 0.45rem 0.55rem; border: 1.5px solid var(--line); border-radius: var(--radius-xs); background: white; }
+.safe-food-input:focus { outline: none; border-color: var(--rose); box-shadow: 0 0 0 3px rgba(201, 160, 138, 0.12); }
+.safe-food-remove { flex-shrink: 0; font-size: 1.2rem; line-height: 1; color: var(--ink-faint); background: none; border: none; cursor: pointer; padding: 0.2rem 0.4rem; border-radius: var(--radius-xs); transition: color var(--transition); }
+.safe-food-remove:hover { color: #a8534b; }
+.safe-food-add-btn { font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: var(--ink-soft); background: white; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); padding: 0.55rem 1rem; cursor: pointer; transition: border-color var(--transition), color var(--transition); }
+.safe-food-add-btn:hover { border-color: var(--ink-soft); color: var(--charcoal); }
+@media (max-width: 640px) { .safe-food-fields, .safe-food-fields-meal { grid-template-columns: 1fr; } }
+@media print {
+  .meal-plan-shopping-add, .meal-plan-shopping-toolbar, .meal-plan-shopping-remove, .meal-plan-shopping-input, .meal-plan-shopping-item-text, .meal-plan-shopping-check { display: none !important; }
+  .meal-plan-shopping-item .meal-plan-print-value { display: block !important; }
+  .safe-food-input, .safe-food-field > span, .safe-food-remove, .safe-food-add-btn, .safe-food-fields { display: none !important; }
+  .safe-food-row .meal-plan-print-value { display: block !important; }
+}
+
 /* Closing */
 .meal-plan-closing {
   margin: 0 0 2rem;
@@ -11434,6 +11491,13 @@ body {
       items: [
         { id: "home", label: "Home" },
         { id: "where-you-are", label: "Where you are" },
+      ],
+    },
+    {
+      label: "Day to day",
+      items: [
+        { id: "daily-log", label: "Daily Observation Log" },
+        { id: "meal-plan", label: "Meal Plan" },
       ],
     },
     {
@@ -17929,6 +17993,12 @@ body {
     ],
   };
 
+  const SAFE_FOODS_INTRO = [
+    "These are the foods and meals that reliably work \u2014 the ones your child will eat, prepared the way that works. Capturing them is not about narrowing the diet. It is about making sure everyone who feeds your child (you, a co-parent, a grandparent, a sitter) can reach for something that works, and giving the team a clear picture of where things actually stand.",
+    "Be specific. Often a food only works a certain way: a particular brand, a particular temperature, cut or plated a particular way. Write down what actually matters, so a reliable food does not become a refusal because someone served it wrong.",
+    "Capture honestly. This is a record of where things are now, not a plan to keep them there. The dietitian and team decide how the diet grows. Your job here is to document what works so the household and the team share the same picture.",
+  ];
+
   // ─────────────────────────────────────────────────────────────────────
   // SHARE WITH CO-PARENT (modal content)
   // Used by Journal export and Daily Log weekly summary export.
@@ -23295,6 +23365,130 @@ body {
     `;
   }
 
+  function MealPlanShoppingCard({ items, onAdd, onToggle, onEdit, onRemove, onSeed, onClearChecked }) {
+    const list = Array.isArray(items) ? items : [];
+    const [draft, setDraft] = useState("");
+    const checkedCount = list.filter((it) => it.checked).length;
+    const submit = () => { onAdd(draft); setDraft(""); };
+    return html`
+      <section className="meal-plan-shopping-card">
+        <p className="section-label">For the week</p>
+        <h2>Shopping list</h2>
+        <p className="meal-plan-shopping-helper">A running list for the week's plan. Add what you need to keep stocked, check items off at the store, and clear them when you're done. Pull in the backup foods and supplements you've already noted, or add your own.</p>
+        <div className="meal-plan-shopping-add">
+          <input type="text" className="meal-plan-shopping-input" value=${draft}
+            placeholder="Add an item (e.g. whole milk, Boost, frozen backup dinner)"
+            onInput=${(e) => setDraft(e.target.value)}
+            onKeyDown=${(e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } }} />
+          <button type="button" className="meal-plan-shopping-add-btn" onClick=${submit} disabled=${!draft.trim()}>Add</button>
+        </div>
+        <div className="meal-plan-shopping-toolbar">
+          <button type="button" className="meal-plan-shopping-tool-btn" onClick=${onSeed}>Pull from this week's plan</button>
+          <button type="button" className="meal-plan-shopping-tool-btn" onClick=${onClearChecked} disabled=${checkedCount === 0}>Clear checked${checkedCount ? ` (${checkedCount})` : ""}</button>
+        </div>
+        ${list.length === 0 ? html`
+          <p className="meal-plan-shopping-empty">Nothing on the list yet. Add an item above, or pull the backup foods and supplements from this week's plan.</p>
+        ` : html`
+          <ul className="meal-plan-shopping-list">
+            ${list.map((it) => html`
+              <li key=${it.id} className=${`meal-plan-shopping-item ${it.checked ? "is-checked" : ""}`}>
+                <label className="meal-plan-shopping-check">
+                  <input type="checkbox" checked=${!!it.checked} onChange=${() => onToggle(it.id)} />
+                </label>
+                <input type="text" className="meal-plan-shopping-item-text" value=${it.text}
+                  onInput=${(e) => onEdit(it.id, e.target.value)} />
+                <button type="button" className="meal-plan-shopping-remove" onClick=${() => onRemove(it.id)} aria-label="Remove item">\u00d7</button>
+                <span className="meal-plan-print-value" aria-hidden="true">${it.checked ? "[x] " : "[ ] "}${it.text}</span>
+              </li>
+            `)}
+          </ul>
+        `}
+      </section>
+    `;
+  }
+
+  function SafeFoodRow({ item, onUpdate, onRemove }) {
+    return html`
+      <article className="safe-food-row">
+        <div className="safe-food-fields">
+          <label className="safe-food-field">
+            <span>Food</span>
+            <input type="text" className="safe-food-input" value=${item.name}
+              placeholder="e.g. a specific brand of cereal"
+              onInput=${(e) => onUpdate(item.id, "name", e.target.value)} />
+          </label>
+          <label className="safe-food-field">
+            <span>How it has to be</span>
+            <input type="text" className="safe-food-input" value=${item.prep}
+              placeholder="Brand, temperature, how it's cut or plated"
+              onInput=${(e) => onUpdate(item.id, "prep", e.target.value)} />
+          </label>
+        </div>
+        <button type="button" className="safe-food-remove" onClick=${() => onRemove(item.id)} aria-label="Remove food">\u00d7</button>
+        <div className="meal-plan-print-value" aria-hidden="true">${item.name}${item.prep ? ` \u2014 ${item.prep}` : ""}</div>
+      </article>
+    `;
+  }
+
+  function GoToMealRow({ item, onUpdate, onRemove }) {
+    return html`
+      <article className="safe-food-row">
+        <div className="safe-food-fields safe-food-fields-meal">
+          <label className="safe-food-field">
+            <span>Meal</span>
+            <input type="text" className="safe-food-input" value=${item.name}
+              placeholder="e.g. buttered pasta dinner"
+              onInput=${(e) => onUpdate(item.id, "name", e.target.value)} />
+          </label>
+          <label className="safe-food-field">
+            <span>What's in it</span>
+            <input type="text" className="safe-food-input" value=${item.components}
+              placeholder="Components, brands, prep"
+              onInput=${(e) => onUpdate(item.id, "components", e.target.value)} />
+          </label>
+          <label className="safe-food-field">
+            <span>When it works</span>
+            <input type="text" className="safe-food-input" value=${item.when}
+              placeholder="Reliable dinner, travel breakfast, hard days\u2026"
+              onInput=${(e) => onUpdate(item.id, "when", e.target.value)} />
+          </label>
+        </div>
+        <button type="button" className="safe-food-remove" onClick=${() => onRemove(item.id)} aria-label="Remove meal">\u00d7</button>
+        <div className="meal-plan-print-value" aria-hidden="true">${item.name}${item.components ? ` \u2014 ${item.components}` : ""}${item.when ? ` (${item.when})` : ""}</div>
+      </article>
+    `;
+  }
+
+  function SafeFoodsCard({ safeFoods, onAddSafeFood, onUpdateSafeFood, onRemoveSafeFood, goToMeals, onAddGoToMeal, onUpdateGoToMeal, onRemoveGoToMeal }) {
+    const foods = Array.isArray(safeFoods) ? safeFoods : [];
+    const meals = Array.isArray(goToMeals) ? goToMeals : [];
+    return html`
+      <section className="safe-food-card">
+        <p className="section-label">The reliable list</p>
+        <h2>Safe foods & go-to meals</h2>
+        <div className="safe-food-intro">
+          ${SAFE_FOODS_INTRO.map((p, i) => html`<p key=${i}>${p}</p>`)}
+        </div>
+        <h3 className="safe-food-subhead">Safe foods</h3>
+        <p className="safe-food-helper">Single foods your child reliably eats. Capture the detail that makes them work.</p>
+        ${foods.length === 0 ? html`<p className="safe-food-empty">Nothing captured yet. Add the first food below.</p>` : html`
+          <div className="safe-food-list">
+            ${foods.map((item) => html`<${SafeFoodRow} key=${item.id} item=${item} onUpdate=${onUpdateSafeFood} onRemove=${onRemoveSafeFood} />`)}
+          </div>
+        `}
+        <button type="button" className="safe-food-add-btn" onClick=${onAddSafeFood}>+ Add a food</button>
+        <h3 className="safe-food-subhead">Go-to meals</h3>
+        <p className="safe-food-helper">Combinations that reliably get eaten. The ones you fall back on when a day is hard.</p>
+        ${meals.length === 0 ? html`<p className="safe-food-empty">Nothing captured yet. Add the first meal below.</p>` : html`
+          <div className="safe-food-list">
+            ${meals.map((item) => html`<${GoToMealRow} key=${item.id} item=${item} onUpdate=${onUpdateGoToMeal} onRemove=${onRemoveGoToMeal} />`)}
+          </div>
+        `}
+        <button type="button" className="safe-food-add-btn" onClick=${onAddGoToMeal}>+ Add a meal</button>
+      </section>
+    `;
+  }
+
   function MealPlanScreen({
     currentLoc,
     prescription, onUpdatePrescription,
@@ -23302,6 +23496,9 @@ body {
     openDayName, onToggleDay,
     onSaveToJournal, saveStatus,
     onShare, onNavigate,
+    shopping, onAddShopping, onToggleShopping, onEditShopping, onRemoveShopping, onSeedShopping, onClearCheckedShopping,
+    safeFoods, onAddSafeFood, onUpdateSafeFood, onRemoveSafeFood,
+    goToMeals, onAddGoToMeal, onUpdateGoToMeal, onRemoveGoToMeal,
   }) {
     return html`
       <div>
@@ -23364,6 +23561,27 @@ body {
             `)}
           </div>
         </section>
+
+        <${MealPlanShoppingCard}
+          items=${shopping}
+          onAdd=${onAddShopping}
+          onToggle=${onToggleShopping}
+          onEdit=${onEditShopping}
+          onRemove=${onRemoveShopping}
+          onSeed=${onSeedShopping}
+          onClearChecked=${onClearCheckedShopping}
+        />
+
+        <${SafeFoodsCard}
+          safeFoods=${safeFoods}
+          onAddSafeFood=${onAddSafeFood}
+          onUpdateSafeFood=${onUpdateSafeFood}
+          onRemoveSafeFood=${onRemoveSafeFood}
+          goToMeals=${goToMeals}
+          onAddGoToMeal=${onAddGoToMeal}
+          onUpdateGoToMeal=${onUpdateGoToMeal}
+          onRemoveGoToMeal=${onRemoveGoToMeal}
+        />
 
         <section className="meal-plan-samples-card">
           <p className="section-label">Reference</p>
@@ -25845,6 +26063,9 @@ body {
     const [mealPlanWeekly, setMealPlanWeekly] = usePersistentState(`${STORAGE_PREFIX}-meal-plan-weekly`, {});
     const [mealPlanOpenDay, setMealPlanOpenDay] = useState(null);
     const [mealPlanSaveStatus, setMealPlanSaveStatus] = useState("idle");
+    const [mealPlanShopping, setMealPlanShopping] = usePersistentState(`${STORAGE_PREFIX}-meal-plan-shopping`, []);
+    const [safeFoods, setSafeFoods] = usePersistentState(`${STORAGE_PREFIX}-safe-foods`, []);
+    const [goToMeals, setGoToMeals] = usePersistentState(`${STORAGE_PREFIX}-go-to-meals`, []);
     // Finding Care: provider call log entries (array of provider objects)
     const [callLogEntries, setCallLogEntries] = usePersistentState(`${STORAGE_PREFIX}-call-log`, []);
     const [shareModalContext, setShareModalContext] = useState(null);
@@ -26573,6 +26794,66 @@ body {
     function handleToggleMealPlanDay(dayName) {
       setMealPlanOpenDay((cur) => cur === dayName ? null : dayName);
     }
+
+    function makeShoppingId() { return `sl-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; }
+    function handleAddShoppingItem(text) {
+      const trimmed = (text || "").trim();
+      if (!trimmed) return;
+      setMealPlanShopping((prev) => [...(Array.isArray(prev) ? prev : []), { id: makeShoppingId(), text: trimmed, checked: false }]);
+    }
+    function handleToggleShoppingItem(id) {
+      setMealPlanShopping((prev) => (Array.isArray(prev) ? prev : []).map((it) => it.id === id ? { ...it, checked: !it.checked } : it));
+    }
+    function handleEditShoppingItem(id, text) {
+      setMealPlanShopping((prev) => (Array.isArray(prev) ? prev : []).map((it) => it.id === id ? { ...it, text } : it));
+    }
+    function handleRemoveShoppingItem(id) {
+      setMealPlanShopping((prev) => (Array.isArray(prev) ? prev : []).filter((it) => it.id !== id));
+    }
+    function handleClearCheckedShopping() {
+      setMealPlanShopping((prev) => (Array.isArray(prev) ? prev : []).filter((it) => !it.checked));
+    }
+    function handleSeedShoppingFromPlan() {
+      const week = mealPlanWeekly || {};
+      const rawLines = [];
+      Object.keys(week).forEach((dayName) => {
+        const backup = (week[dayName]?.backupOption || "").trim();
+        if (backup) rawLines.push(backup);
+      });
+      const supp = (mealPlanPrescription?.supplements || "").trim();
+      if (supp) rawLines.push(supp);
+      const candidates = rawLines.flatMap((line) => line.split(/[\n,]+/)).map((s) => s.trim()).filter(Boolean);
+      setMealPlanShopping((prev) => {
+        const arr = Array.isArray(prev) ? prev : [];
+        const seen = new Set(arr.map((it) => it.text.toLowerCase()));
+        const additions = [];
+        candidates.forEach((c) => {
+          if (!seen.has(c.toLowerCase())) { seen.add(c.toLowerCase()); additions.push({ id: makeShoppingId(), text: c, checked: false }); }
+        });
+        return [...arr, ...additions];
+      });
+    }
+
+    function makeSafeFoodId() { return `sf-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; }
+    function makeGoToMealId() { return `gm-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; }
+    function handleAddSafeFood() {
+      setSafeFoods((prev) => [...(Array.isArray(prev) ? prev : []), { id: makeSafeFoodId(), name: "", prep: "" }]);
+    }
+    function handleUpdateSafeFood(id, field, value) {
+      setSafeFoods((prev) => (Array.isArray(prev) ? prev : []).map((it) => it.id === id ? { ...it, [field]: value } : it));
+    }
+    function handleRemoveSafeFood(id) {
+      setSafeFoods((prev) => (Array.isArray(prev) ? prev : []).filter((it) => it.id !== id));
+    }
+    function handleAddGoToMeal() {
+      setGoToMeals((prev) => [...(Array.isArray(prev) ? prev : []), { id: makeGoToMealId(), name: "", components: "", when: "" }]);
+    }
+    function handleUpdateGoToMeal(id, field, value) {
+      setGoToMeals((prev) => (Array.isArray(prev) ? prev : []).map((it) => it.id === id ? { ...it, [field]: value } : it));
+    }
+    function handleRemoveGoToMeal(id) {
+      setGoToMeals((prev) => (Array.isArray(prev) ? prev : []).filter((it) => it.id !== id));
+    }
     async function handleSaveMealPlanToJournal() {
       if (mealPlanSaveStatus === "saving") return;
       setMealPlanSaveStatus("saving");
@@ -26964,6 +27245,21 @@ body {
               exportTextAsFile("meal-plan-" + today + ".md", md);
             })}
             onNavigate=${handleNavigate}
+            shopping=${mealPlanShopping || []}
+            onAddShopping=${handleAddShoppingItem}
+            onToggleShopping=${handleToggleShoppingItem}
+            onEditShopping=${handleEditShoppingItem}
+            onRemoveShopping=${handleRemoveShoppingItem}
+            onSeedShopping=${handleSeedShoppingFromPlan}
+            onClearCheckedShopping=${handleClearCheckedShopping}
+            safeFoods=${safeFoods || []}
+            onAddSafeFood=${handleAddSafeFood}
+            onUpdateSafeFood=${handleUpdateSafeFood}
+            onRemoveSafeFood=${handleRemoveSafeFood}
+            goToMeals=${goToMeals || []}
+            onAddGoToMeal=${handleAddGoToMeal}
+            onUpdateGoToMeal=${handleUpdateGoToMeal}
+            onRemoveGoToMeal=${handleRemoveGoToMeal}
           />
         `;
       }
